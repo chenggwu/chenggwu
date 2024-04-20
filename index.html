@@ -1,8 +1,39 @@
-<script>
-  $(document).ready(function() {
-    $("p").addClass("animated bounce");
-  });
-</script>
-<p>大家好 我的名字是許正吾</p> 
-<p>這是我的 Personal page</p> 
-<p>請多多指教</p> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    /* 添加自定義樣式 */
+    .animated-link {
+      display: block;
+      margin-top: 10px;
+      font-size: 16px;
+      color: blue;
+      text-decoration: none;
+    }
+
+    .animated-link:hover {
+      color: red;
+    }
+  </style>
+  <script>
+    // jQuery 文檔就緒後套用動畫效果
+    $(document).ready(function() {
+      $("p").addClass("animated bounce");
+    });
+  </script>
+</head>
+<body>
+  <!-- 原始段落 -->
+  <p>Hello there, my name is chengwuhsu.</p> 
+  <p>This is my personal page.</p> 
+  <p>Click following links to see more stuff.</p> 
+  <!-- 新增連結 -->
+  <a href="https://chenggwu.github.io/chenggwu/web_project.html" class="animated-link" target="_blank">Web Project</a>
+  <a href="https://chenggwu.github.io/chenggwu/data_structure.html" class="animated-link" target="_blank">Data Structure</a>
+</body>
+</html>
