@@ -1,1 +1,333 @@
-<p>hello</p>
+<!DOCTYPE html>
+<html>
+<title>資料結構筆記</title>
+<body>
+
+<h1>Python資料結構複習</h1>
+<h2>Tuple/List/Dict/Sets</h2>
+<p>
+    <pre>
+    tuple = () #元組：不可增減，但可重新賦值
+    #用法：tuple(obj),切片,in,for in,del,cmp,len,max,min
+    #定義一個元組
+    tuple1 =()
+    tuple1 = tuple({1,2,3,4,5,'6'})
+    tuple1 = (1, 2, '3', 4, '5')
+    #定義了一個元組之後就無法再添加或修改元組中的元素,但是可以重新賦值
+
+    print tuple1[0]    # 元組的元素都有確定的順序。元組的索引也是以0為基點的
+    print tuple1[-1]   # 負的索引從元組的尾部開始計數
+    print tuple1[1:3]  # 元組也可以進行切片操作。對元組切片可以得到新的元組。
+
+    # 可以使用 in 運算符檢查某元素是否存在於元組中。
+    print 1 in tuple1   # True
+    #使用for in 進行遍歷元組
+    for item in tuple1:
+        print item
+
+    # 如果需要獲取item的序號 可以使用下面的遍歷方法：
+    for index in range(len(tuple1)):
+        print tuple1[index]
+
+    # 還可以使用內置的enumerate函數
+    for index, item in enumerate(tuple1):
+        print '%i, %s' % (index, item)
+    print max(tuple1)
+    print min(tuple1)
+    print len(tuple1)
+    -------------------------------------
+    list = [] #列表：元組的可變版本
+    #用法：list(obj),切片,in,for in,del,cmp,len,max,min
+    #額外用法：list.append(),list.insert(index,obj),list.extend(seq),list.remove(obj),list.pop(index=-1),list.count(obj),sorted(list),reversed(list),list.index(obj)
+    #定義一個列表
+    listA = ['a', 'b', 'c', 1, 2]
+
+    list(obj)
+    #把對象轉換成列表,obj可以是元組,字典,字符串等
+    print list((1,2,3,4,5,6,8,6))
+    #[1,2,3,4,5,6,8,6]
+    halloword = list('hallo word')
+    print halloword
+    #['h', 'a', 'l', 'o', ' ', 'w', 'o', 'r', 'd']
+
+    #元素計數
+    print halloword.count('o')
+    #2
+
+    #元素查找(返回第一次出現索引,沒有則報錯)
+    print halloword.index('o')
+    #3
+    #haloword[3]='o'
+
+    #元素排序,倒置位置
+    numbers = [1,2,3,'4',5,'6']
+    print sorted(numbers)
+    #[1, 2, 3, 5, '4', '6']
+    print list(reversed(numbers))
+    #['6', 5, '4', 3, 2, 1]
+
+    # 向 list 中增加元素
+
+    # 1.使用append   向 list 的末尾追加單個元素。
+    listA.append(3)
+
+    # 2.使用 insert  將單個元素插入到 list 中。數值參數是插入點的索引
+    listA.insert(3, 'd') # 在下標為3處添加一個元素
+
+    # 3.使用 extend 用來連接 list
+    listA.extend([7, 8])
+
+    # extend 和 append 看起來類似，但實際上完全不同。
+    # extend 接受一個參數，這個參數總是一個 list，
+    # 並且把這個 list 中的每個元素添加到原 list 中。
+    # 另一方面，append 接受一個參數，這個參數可以是任何數據類型，並且簡單地追加到 list 的尾部。
+
+    # 獲取列表的長度
+    print len(listA)  # 9
+
+    # 在 list 中搜索
+    listA.index(3)  # index 在 list 中查找一個值的首次出現並返回索引值。
+
+    listA.index('100')  # 如果在 list 中沒有找到值，Python 會引發一個異常。
+
+    # 要測試一個值是否在 list 內，使用 in。如果值存在，它返回 True，否則返為 False 。
+    print 5 in listA  
+
+    # 從 list 中刪除元素
+    # remove 從 list 中 僅僅 刪除一個值的首次出現。如果在 list 中沒有找到值，Python 會引發一個異常
+    listA.remove(3)  
+
+    # pop 它會做兩件事：刪除 list 的最後一個元素，然後返回刪除元素的值。
+    print listA.pop()  
+
+    # 遍歷list
+    for item in listA:
+        print item
+    -------------------------------------
+    Dictionary = {} #字典：用來存取一對一數值
+    #用法：dict(obj),in,for key in dict,del,cmp,len,max,min
+    #額外用法：dict[key],dict.keys(),dict.fromkeys(seq,value),
+    #dict.has_key(key),dict.get(key,default),dict.items(),
+    #dict.values():,dict.update(dict2),dict.pop(key),
+    #dict.setdefault(key ,defaultvalue),dict.clear(),dict.copy()
+    # 定義一個字典
+    # Dictionary 不只是用於存儲字符串。Dictionary 的值可以是任意數據類型，
+    # 包括字符串、整數、對象，甚至其它的 dictionary。
+    # 在單個 dictionary 里，dictionary 的值並不需要全都是同一數據類型，可以根據需要混用和匹配。
+    dict1 = {'name' : 'LiuZhichao', 'age' : 24, 'sex' : 'Male'}
+
+    dict1['name'] = 'Liuzc' # 為一個已經存在的 dictionary key 賦值，將簡單覆蓋原有的值。
+
+    dict1['Age'] = 25 # 在 Python 中是區分大小寫的  age和Age是完全不同的兩個key
+
+    #使用dict()創建字典
+    dict_test = dict((['x',1],['y',2]))
+    #{'y': 2, 'x': 1}
+
+    #使用dict.fromkeys()創建字典
+    #創建並返回一個新字典，以序列seq中元素做字典的鍵，val為字典所有鍵對應的初始值(默認為None)
+    dict.fromkeys(seq,val=None) 
+
+    #遍歷數組 form key in dict_test (不可以更改字典長度,報錯)
+    # 方法 1.報錯
+    form key in dict_test:
+        if(key=='x'):
+            del dict_test[key]
+    # 方法 2.正常
+    from key in dict_test.keys()
+        if(key=='x'):
+            del dict_test[key]
+
+    #dict.has_key(key)判斷key是否存在
+    dict_test.has_key('x')
+    #True
+
+    #dict.get(key,default) 返回鍵值key的值，若是key不存在，返回default的值 
+    dict_test.get('x',0)
+    #1
+
+    #dict.update(dict2) 將dict2的鍵值對列表添加到字典dict中去 
+    dict_test.update({
+        'name':'rming',
+        'age':100,
+    })
+    #{'y': 2, 'x': 1,'name':'rming','age':100}
+
+    #dict.pop(key)返回鍵值key的value ,刪除原字典該減值
+    print dict_test.pop('name')
+    print dict_test
+    #rming
+    #{'y': 2, 'x': 1,'age':100}
+
+    #dict.setdefault(key ,defaultvalue) 類似get方法，能夠獲得給定key的value，此外setdefault還能在自動重不含有給定key的情況下設定相應的key-value
+    dict_test.setdefault('sex','male')
+    #male
+    #{'y': 2, 'x': 1,'age':100,'sex','male'}
+
+    #dict.copy():返回具有相同key-value的新字典，為淺覆制(shallow copy)
+    new_dict = dict_test.copy()
+
+    #key in dict 是否有該鍵,同 dict.has_key(key)
+    'x' in new_dict
+    #True
+
+    # 從字典中刪除元素
+    del dict1['sex']  # del 允許您使用 key 從一個 dictionary 中刪除獨立的元素
+
+    dict1.clear()  # clear 從一個 dictionary 中清除所有元素
+    ```
+    # 定義一個字典
+    # Dictionary 不只是用於存儲字符串。Dictionary 的值可以是任意數據類型，
+    # 包括字符串、整數、對象，甚至其它的 dictionary。
+    # 在單個 dictionary 里，dictionary 的值並不需要全都是同一數據類型，可以根據需要混用和匹配。
+    dict1 = {'name' : 'LiuZhichao', 'age' : 24, 'sex' : 'Male'}
+
+    dict1['name'] = 'Liuzc' # 為一個已經存在的 dictionary key 賦值，將簡單覆蓋原有的值。
+
+    dict1['Age'] = 25 # 在 Python 中是區分大小寫的  age和Age是完全不同的兩個key
+
+    #使用dict()創建字典
+    dict_test = dict((['x',1],['y',2]))
+    #{'y': 2, 'x': 1}
+
+    #使用dict.fromkeys()創建字典
+    #創建並返回一個新字典，以序列seq中元素做字典的鍵，val為字典所有鍵對應的初始值(默認為None)
+    dict.fromkeys(seq,val=None) 
+
+    #遍歷數組 form key in dict_test (不可以更改字典長度,報錯)
+    # 方法 1.報錯
+    form key in dict_test:
+        if(key=='x'):
+            del dict_test[key]
+    # 方法 2.正常
+    from key in dict_test.keys()
+        if(key=='x'):
+            del dict_test[key]
+
+    #dict.has_key(key)判斷key是否存在
+    dict_test.has_key('x')
+    #True
+
+    #dict.get(key,default) 返回鍵值key的值，若是key不存在，返回default的值 
+    dict_test.get('x',0)
+    #1
+
+    #dict.update(dict2) 將dict2的鍵值對列表添加到字典dict中去 
+    dict_test.update({
+        'name':'rming',
+        'age':100,
+    })
+    #{'y': 2, 'x': 1,'name':'rming','age':100}
+
+    #dict.pop(key)返回鍵值key的value ,刪除原字典該減值
+    print dict_test.pop('name')
+    print dict_test
+    #rming
+    #{'y': 2, 'x': 1,'age':100}
+
+    #dict.setdefault(key ,defaultvalue) 類似get方法，能夠獲得給定key的value，此外setdefault還能在自動重不含有給定key的情況下設定相應的key-value
+    dict_test.setdefault('sex','male')
+    #male
+    #{'y': 2, 'x': 1,'age':100,'sex','male'}
+
+    #dict.copy():返回具有相同key-value的新字典，為淺覆制(shallow copy)
+    new_dict = dict_test.copy()
+
+    #key in dict 是否有該鍵,同 dict.has_key(key)
+    'x' in new_dict
+    #True
+
+    # 從字典中刪除元素
+    del dict1['sex']  # del 允許您使用 key 從一個 dictionary 中刪除獨立的元素
+    dict1.clear()  # clear 從一個 dictionary 中清除所有元素
+    -------------------------------------
+    #集合：一種無序不重複元素集
+    #定義一個集合
+    set1 = {1, 2, 3, 4, 5}
+
+    # 或者使用 set 函數
+    list1 = [6, 7, 7, 8, 8, 9]
+    set2 = set(list1)
+    set2.add(10)  # 添加新元素
+    print set2  # set([8, 9, 6, 7])  去掉重覆內容,而且是無序的
+    set3 = frozenset(list1)
+    set3.add(10)  # 固定集合不能添加元素
+
+    #方法（所有的集合方法）：
+    s.issubset(t)  #如果s是t的子集,返回True，否則返回False
+    s.issuperset(t)  #如果s是t的超集,返回True，否則返回False
+    s.union(t)   #返回一個新集合, 該集合是s和t的並集
+    s.intersection(t)  #返回一個新集合, 該集合是s和t的交集
+    s.difference(t)  #返回一個新集合, 該集合是s的成員, 但不是t的成員, 即返回s不同於t的元素
+    s.symmetric_defference(t)  #返回所有s和t獨有的(非共同擁有)元素集合
+    s.copy()  #返回一個s的淺拷貝, 效率比工廠要好
+
+    #方法（僅適用於可變集合）:以下方法參數必須是可哈希的
+    s.update(t) #用t中的元素 修改s，即s現在包含s或t的成員
+    s.intersection_update(t) #s中的成員是共同屬於s和t的元素
+    s.difference_update(t) #s中的成員是屬於s但不包含在t中的元素
+    s.symmetric_difference_update(t) #s中的成員更新為那些包含在s或t中，但不是s和t共有的元素
+    s.add(obj) #在集合s中添加對象obj
+    s.remove(obj) #從集合s中刪除對象obj，如果obj不是集合s中的元素（obj not in s）,將引發keyError錯誤
+    s.discard(obj) #如果obj是集合s中的元素，從集合s中刪除對象obj
+    s.pop() #刪除集合s中得任意一個對象，並返回它
+    s.clear() #刪除集合s中的所有元素
+
+    ## 集合有並集，交集，求差操作
+    ## 並集：intersection() 方法返回一個新集合，包含在兩個集合中同時出現的所有元素。
+    ## 交集：union() 方法返回一個新集合，包含在兩個 集合中出現的元素。
+    ## 差集：difference() 方法返回的新集合中，包含所有在 集合A出現但未在集合B中的元素。
+    ## symmetric_difference() 方法返回一個新集合，包含所有只在其中一個集合中出現的元素。
+
+    # 刪除元素
+    set2.discard(6)   # 當元素不存在時,不會引發異常
+    set2.remove(6)    # 與discard的區別在於，如果沒有要刪除的元素，remove會引發一個異常
+    set2.pop()  # 因為set是無序的，所以pop會隨機的從set中刪除一個元素
+    </pre>
+</p>
+
+<h1>
+    Ch1-Ch4(Algo,array,stack,queue,link-list)
+</h1>
+<h1>
+    Ch6-10(Tree,heap,2-3-4,m-way,sort)
+</h1>
+<style>
+    body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+    }
+    .image-container {
+        width: 50%;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+    .image-container img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+    <div class="image-container"><img src="https://imgur.com/a/2gLTK45" alt="Image 1"></div>
+    <div class="image-container"><img src="https://imgur.com/kJox6jO" alt="Image 2"></div>
+    <div class="image-container"><img src="https://imgur.com/O0RJhBg" alt="Image 3"></div>
+    <div class="image-container"><img src="https://imgur.com/XyTeMD8" alt="Image 4"></div>
+    <div class="image-container"><img src="https://imgur.com/yndda8L" alt="Image 5"></div>
+    <div class="image-container"><img src="https://imgur.com/Md8Q5XS" alt="Image 6"></div>
+    <div class="image-container"><img src="https://imgur.com/uoyQFDI" alt="Image 7"></div>
+    <div class="image-container"><img src="https://imgur.com/prMrqbA" alt="Image 8"></div>
+    <div class="image-container"><img src="https://imgur.com/kmGl2Y7" alt="Image 9"></div>
+    <div class="image-container"><img src="https://imgur.com/K7NlDnQ" alt="Image 10"></div>
+    <div class="image-container"><img src="https://imgur.com/NeD9SP0" alt="Image 11"></div>
+    <div class="image-container"><img src="https://imgur.com/salYqia" alt="Image 12"></div>
+    <div class="image-container"><img src="https://imgur.com/sael11n" alt="Image 13"></div>
+    <div class="image-container"><img src="https://imgur.com/B2PCTgl" alt="Image 14"></div>
+    <div class="image-container"><img src="https://imgur.com/P2AAt4v" alt="Image 15"></div>
+    <div class="image-container"><img src="https://imgur.com/iBhCWTS" alt="Image 16"></div>
+
+</body>
+</html>
